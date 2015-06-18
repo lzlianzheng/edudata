@@ -1,0 +1,8 @@
+* { margin:0px; padding:0px; }
+body { font-size:12px; line-height:25px;color:#000;background:#fff; }
+.tl { text-align:left; }
+.tc { text-align:center; }
+.tr { text-align:right; }
+.fl {	float:left; }
+.fr {	float:right; }
+#printarea{width:750px;margin:0 auto;}

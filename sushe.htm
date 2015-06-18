@@ -1,0 +1,20 @@
+<html>
+				<head><title>宿舍分布</title></head>
+				<body>
+								<form action="sushe.php" method="post">
+												请输入入学年份：<input name="year" type="text" />
+												请输入班级：<input name="id" type="text">
+												<input type="submit" value="查询">
+								</form>
+								<table>
+												<tr>
+																<td>班级</td>
+																<td>楼号</td>
+																<td>宿舍号</td>
+												</tr>
+												<td><?php echo $result->name ?></td>
+												<td><?php echo $result->name ?></td>
+												<td><?php echo $result->name ?></td>
+								</table>
+				</body>
+</html>

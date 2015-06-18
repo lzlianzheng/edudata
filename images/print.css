@@ -1,0 +1,13 @@
+* { margin:0px; padding:0px; }
+body { font-size:12px; line-height:25px;color:#000;background:#fff; }
+.tl { text-align:left; }
+.tc { text-align:center; }
+.tr { text-align:right; }
+.fl {	float:left; }
+.fr {	float:right; }
+.ptop{padding:15px;}
+#printarea{width:750px;margin:0 auto;}
+.consigntab{width:100%;border-collapse:collapse;}
+.consigntab td{padding:5px;line-height:25px;border:1px solid #000;}
+.consigntab .tc{font-size:150%;font-weight:bold;line-height:25px;}
+.consigntab .num{font-size:150%;}
