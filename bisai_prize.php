@@ -81,7 +81,6 @@ include("header.php");
 					echo "<tr>".
 					"<td><input id=\"slt$v->nid\" type=\"checkbox\" name=\"chk[]\" value=\"$v->nid\" /></td>";
 					echo "
-
 					<td>$v->name</td>
 					<td>$v->classname</td>
 					<td>$v->leibie</td>

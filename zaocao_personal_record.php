@@ -84,7 +84,7 @@ if($_REQUEST['act'] =='list')
 		{
 		echo "<tr>";
 		echo "<td><input id=\"slt$v->nid\" type=\"checkbox\" name=\"chk[]\" value=\"$v->nid\" /></td>";
-		echo "<td>$v->id</td>
+		echo "<td>$v->sid</td>
 			<td>$v->name</td>
 			<td>$v->classname</td>
 			<td>$v->zhouci</td>

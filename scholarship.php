@@ -82,7 +82,6 @@
 		{
 			foreach($result as $k=>$v)
 			{
-				
 				echo"<tr>
 					<td><input id=\"slt$v->nid\" type=\"checkbox\" name=\"chk[]\" value=\"$v->nid\" /></td>
 					<td>$v->sid</td>
@@ -103,7 +102,7 @@
 	</table>
 	<br>
 	<div class="fl" style="text-indent:20px;">
-		<input id="slt1" type="checkbox"/>&nbsp;&nbsp;
+		<input id="slt" type="checkbox"/>&nbsp;&nbsp;
 		<select name="stat">
 		<option value="">批量应用</option>
 		<option value="del">删除</option>
