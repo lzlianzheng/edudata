@@ -3,12 +3,9 @@ require_once 'include/common.inc.php';
 require_once 'getuid.php';	
 
 	$table = honour;
-	$sql="select a.*,a.id as nid,a.year,a.xueqi,b.name,b.sid,b.classid,c.year,c.id,c.majorid,c.name as classname,d.id,d.uid from stuhonour a left join student_info b on a.sid = b.sid left join class c on b.classid = c.id left join major d on c.majorid = d.id where 1";
+	$sql="select a.*,a.id as nid,a.xueqi,a.xueqi,b.name,b.sid,b.classid,c.year,c.id,c.majorid,c.name as classname,d.id,d.uid from honour a left join student_info b on a.sid = b.sid left join class c on b.classid = c.id left join major d on c.majorid = d.id where 1";
 	$panduan = 1;//判断主表单里表示学年的字段名是year还是xuenian,是xuenian则为1；
 	include("sqlresult.php");
-
-	//$sql1 = "select ";
-	
 	if($_REQUEST["act"] == "out")
 	{
 		header("Content-type: application/vnd.ms-excel; charset=gb2312");
@@ -18,8 +15,7 @@ require_once 'getuid.php';
 		<td>姓名</td>
 		<td>班级</td>
 		<td>级别</td>
-		<td>三好学生</td>
-		<td>优秀干部</td>
+		<td>优秀称号</td>
 		<td>学年</td>
 		<td>学期</td>
 		<td>添加时间</td>";
@@ -35,8 +31,8 @@ require_once 'getuid.php';
 							<td>$v->name</td>
 							<td>$v->classname</td>
 							<td>校级</td>";
-							if("$v->yougan" == 1) $outc .= "<td>优秀学生干部</td>";else $outc .="<td>无</td>";
-							if("$v->sanhao" == 1) $outc .= "<td>三好学生</td>";else $outc .= "<td>无</td>";
+							if("$v->yougan" == 1) $outc .= "<td>优秀学生干部</td>";
+							if("$v->sanhao" == 1) $outc .= "<td>三好学生</td>";
 							$outc .= "<td>$v->xuenian</td>
 							<td>$v->xuenian</td>
 							<td>$v->xueqi</td>
@@ -55,6 +51,7 @@ require_once 'getuid.php';
         <span class='fr'>
 		</span>
 		</div>";
+		
 ?>
 	<div class="menu">　
 	<!--<a href="data_in.php?name=stu_leader_record">导入数据</a>-->
@@ -70,6 +67,7 @@ require_once 'getuid.php';
 ?>
 	</form>
 	</div>
+	<div>
 	<form  method="post">
 	<table cellspacing="0" cellpadding="0" class="t_list tc list5">
 	<tr>
@@ -78,8 +76,7 @@ require_once 'getuid.php';
 		<td>姓名</td>
 		<td>班级</td>
 		<td>级别</td>
-		<td>三好学生</td>
-		<td>优秀干部</td>
+		<td>优秀称号</td>
 		<td>学年</td>
 		<td>学期</td>
 		<td colspan="2">操作</td>
@@ -97,12 +94,12 @@ require_once 'getuid.php';
 					<td>$v->name</td>
 					<td>$v->classname</td>
 					<td>校级</td>";
-					if("$v->yougan" == 1) echo "<td>优秀学生干部</td>";else echo "<td>无</td>";
-					if("$v->sanhao" == 1) echo "<td>三好学生</td>";else echo "<td>无</td>";
+					if("$v->yougan" == 1) echo "<td>优秀学生干部</td>";
+					if("$v->sanhao" == 1) echo "<td>三好学生</td>";
 					echo"<td>$v->xuenian</td>
 					<td>$v->xueqi</td>
 					<td><a href='sch_honour_modify.php?act=sel&sname=$sname&sid=$sid&s_major=$major&s_year=$grade&s_class=$classn&xuenian=$sxuenian&xueqi=$sxueqi&id=$v->nid'>修改</a></td>
-					<td><a href='sch_honour.php?act=delete&id=$v->sid' onClick='delete_confirm' >删除</a></td>";
+					<td><a href='sch_honour.php?act=delete&id=$v->nid' onClick='delete_confirm' >删除</a></td>";
 				echo "</tr>";
 			}
 		}
@@ -121,6 +118,7 @@ require_once 'getuid.php';
 		<input type="submit" class="subtn" value="提交" onclick="if(!confirm('确认执行相应操作?')) return false;"/>
 	</div>
 	</form>
+	</div>
 <?php 
 	include("footer.php");
 ?>
