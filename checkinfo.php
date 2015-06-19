@@ -3,7 +3,7 @@ require_once 'include/common.inc.php';
 $stararr = array("","一星","二星","三星","四星","五星");
 if($_REQUEST['act'] == 'info')
 {
-	$id = $_REQUEST['sid'];
+	$stuid = $_REQUEST['sid'];
 	$sname = $_REQUEST['sname'];
 	$zhouci = $_REQUEST['zhouci']; 
 	$year = $_REQUEST['year'];
@@ -12,7 +12,7 @@ if($_REQUEST['act'] == 'info')
 	{
 		$score = 60;
 		$sql = "select a.sid,a.name,a.classid,a.dormbn,a.dormnumber,b.name as classname from student_info a left join class b on a.classid = b.id where 1 ";
-		$sql .= ($id)? " and a.sid='$id' " : "" ;
+		$sql .= ($stuid)? " and a.sid='$stuid' " : "" ;
 		$sql .= ($sname)? " and a.name='$sname' " : "" ;
 		$sidarr = $yiqi_db->get_row($sql);
 		$sidnow = $sidarr->sid;
@@ -197,8 +197,8 @@ $(document).ready(function(){
 	<option <?php if($xueqi == 1){echo "selected";} ?> value="1">第一学期</option>
 	<option <?php if($xueqi == 2){echo "selected";} ?> value="2">第二学期</option>
 	</select>
-	学号<input type="text" name="sid" value="<?php echo $sidnow ?>">
-	姓名<input type="text" name="sname" value="<?php echo $sidarr->name ?>">
+	学号<input type="text" name="sid" value="">
+	姓名<input type="text" name="sname" value="">
 周次<input type="text" name="zhouci"  value="<?php echo $zhouci ?>" size="5" />
 <input type="submit" value="提交" id="submit" />
 </form>
@@ -207,9 +207,11 @@ $(document).ready(function(){
 <table cellspacing="0" cellpadding="0" class="t_xyt tc">
 <tr>
 <?php
-		echo "<td width='15%' class='df'>姓名</td><td width='15%'>$sidarr->name</td>
-		<td width='15%' class='df'>班级</td><td>$sidarr->classname</td>
-		<td width='15%' class='df'>总分</td><td width='15%'>$score</td>";
+		echo "<td width='10%' class='df'>学号</td><td width='10%'>$sidarr->sid</td>
+		<td width='10%' class='df'>姓名</td><td width='10%'>$sidarr->name</td>
+		<td width='10%' class='df'>班级</td><td width='10%'>$sidarr->classname</td>
+		<td width='10%' class='df'>宿舍号</td><td width='10%'>$sidarr->dormbn-$sidarr->dormnumber</td>
+		<td width='10%' class='df'>总分</td><td width='10%'>$score</td>";
 ?>
 </tr>
 </table>

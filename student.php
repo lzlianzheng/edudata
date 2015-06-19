@@ -4,6 +4,14 @@ require_once 'getuid.php';
 $table = student_info;
 $sql = "select b.name as stuname,b.*,b.status as stustatus,c.name as classname,c.*,d.* from student_info b left join class c on b.classid = c.id left join major d on c.majorid = d.id where 1 ";
 include("sqlresult.php");
+if($_REQUEST['act'] =='delete1')
+{
+	$sid = $_GET["sid"];
+$sql="delete from student_info where sid=$sid";
+$yiqi_db->query($sql);
+echo "<script type=text/javascript>alert('删除成功');window.history.go(-1);</script>";exit;
+}
+//print("$sql");
 /*$action=$_REQUEST['act'];
 		$sname = $_GET["sname"];
 		$sid = $_GET["sid"];
@@ -26,13 +34,7 @@ if($action=='ls')
 				$sql .=" and b.id=$classn";
 $result=$yiqi_db->get_results($sql);
 }
-if($action=='delete')
-{
-$sql="delete from student_info where sid=$sid";
-$yiqi_db->query($sql);
-echo "<script type=text/javascript>alert('删除成功');window.history.go(-1);</script>";exit;
-}
-//print("$sql");*/
+*/
 $title="学生信息维护";
 include("header.php");
 ?>
@@ -96,7 +98,7 @@ if($_REQUEST['act'] =='list')
 				<td>$v->dormnumber</td>
 				<td>$v->type</td>
 				<td>$v->stustatus</td>
-				<td><a href='student.php?act=delete&sid=$v->sid' onClick='delete_confirm' >删除</a></td>
+				<td><a href='student.php?act=delete1&sid=$v->sid' onClick='delete_confirm' >删除</a></td>
 			</tr>";
 		}
 	}else{echo"<tr><td colspan='12'>暂无记录</td></tr>";}

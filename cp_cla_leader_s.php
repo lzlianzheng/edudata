@@ -9,10 +9,10 @@
 		$major=$_GET["s_major"];
 		$grade=$_GET["s_year"];
 		$classn = $_GET["s_class"];
-		$sql="select a.name,a.sid,a.classid,b.year,b.majorid,b.id,b.name as classname,c.id,c.uid from student_info a left join class b on a.classid=b.id left join major c on b.majorid = c.id where 1";
+		$sql="select a.name,a.sid,a.classid,b.year,b.majorid,b.id,b.name as classname,c.id,c.uid from student_info a left join class b on a.classid=b.id left join major c on b.majorid = c.id right join stu_leader d on d.sid = a.sid where 1";
 				$sql .=" and c.uid = $uid "; 
 			if($sname)
-				$sql .=" and b.name like '%$sname%' "; 
+				$sql .=" and a.name like '%$sname%' "; 
 			if($sid)
 				$sql .=" and a.sid=$sid";
 			if($grade)

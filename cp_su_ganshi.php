@@ -118,7 +118,6 @@ require_once 'getuid.php';
 	</select>&nbsp;
 	<input type="submit" class="subtn" value="提交" onclick="if(!confirm('确认执行相应操作?')) return false;"/>
 </div>
-
 </form>	
 <?php 
 	include("footer.php");?>
